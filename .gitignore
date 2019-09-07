@@ -1,10 +1,9 @@
 ﻿
+##打包路径
 out
 
-target
 
 .idea
-
 
 
 *.iml

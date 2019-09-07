@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://192.168.4.38:5431/gv_place
+      username: postgres
+      password: postgres
+  jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          temp:
+            use_jdbc_metadata_defaults: false
+      show-sql: true
+  application:
+      name: JDBC
+      version:  V0.1_2019
+      file-dir: F:\Burning\Coding\A_SpringBoot\File\upload
+
+
+
+swagger:
+  enabled: true
+  title: 开发文档
+  version: ${spring.application.version}
+  description: 开发文档
+  exclude-path: /error,/actuator/**
+  contact:
+    name: CoderLG
+    email: im.lg@qq.com
