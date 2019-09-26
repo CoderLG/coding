@@ -253,6 +253,7 @@ public class DBHelper {
 			if (null != con) {
 				st = con.createStatement();
 				if (null != st) {
+					//st.setFetchSize(100);  设置一次读取长度
 					st.execute(insertSql1);
 					st.close();
 				}

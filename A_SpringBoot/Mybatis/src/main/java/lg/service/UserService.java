@@ -21,6 +21,7 @@ public interface UserService {
 
     int update (TUser tuer);
 
-
     int delete(Long id);
+
+    int deleteAll();
 }

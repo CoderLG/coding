@@ -74,7 +74,7 @@ public class UserController {
     //查询
     @GetMapping("defFindAll")
     @ResponseBody
-    @Transactional
+    @Transactional                                  //查询没有事务
     @Cacheable(value = "userCache")
     public List<User> defFindAll(){
         List<User> all = userDao.findAll(new Sort(Sort.Direction.DESC,"age"));
@@ -83,18 +83,56 @@ public class UserController {
         return all;
     }
 
+    @GetMapping("autoSave")
+    @ResponseBody
+    @Transactional                   //查询没有事务
+    public List<User> autoSave(){
+        List<User> all = userDao.findAll();
+        for (User u:all){
+            u.setAge(55);                   //会被自动修改
+        }
+        System.out.println("update end");
+        return all;
+    }
+
+    @GetMapping("autoSave2")
+    @ResponseBody
+   @Transactional                   //查询没有事务
+    public User autoSave2(){
+        Optional<User> byId = userDao.findById(3);      //debugger 中能看到
+        User user = byId.get();
+        user.setAge(555);                //会 自动更新 没有事务不会更新，说明是事务引起的
+        System.out.println("update end");
+        return user;
+    }
+
+
     //修改
     @GetMapping("defUpdate")
     @ResponseBody
-   // @Transactional
-    public User defUpdate(){
+    //@Transactional
+    public Object defUpdate(){
         User one = userDao.getOne(2);
-        one.setName("new name");
-        User save = userDao.save(one);
+        one.setName("new name333");         //debugger 看不见one中内容
+        System.out.println(one.getAge());     //能get到值
 
+
+     //   one.setAge(55);                      //不会自动更新
+
+        one.setName("new name644");       //手动开启事务
+        User save = userDao.save(one);      //debugger 能看见one中内容
+
+
+        System.out.println(save.getAge());
         System.out.println("update end");
-        int i =1/0;
-        return save;
+
+
+        save.setAge(878);                    //会 自动更新 没有事务不会更新，说明是事务引起的
+
+
+
+       // int i =1/0;
+        return 11;
     }
 
     //删除

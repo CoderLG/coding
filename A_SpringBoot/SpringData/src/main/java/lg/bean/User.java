@@ -11,7 +11,7 @@ import java.util.Set;
 //@Data			//n对多的时候 不用lombok
 @Entity
 @Table(name="t_user")
-public class User {
+public class User  {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
