@@ -7,7 +7,7 @@ spring:
     version: ${random.long}
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.4.17:5431/new_tp
+    url: jdbc:postgresql://192.168.4.17:4444/ming
     username: postgres
     password: postgres
   jpa:
@@ -15,10 +15,10 @@ spring:
         ddl-auto: update
       properties:
         hibernate:
+          dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect    #与jts_geometry相关
           temp:
             use_jdbc_metadata_defaults: false
       show-sql: true
-
 
 
 

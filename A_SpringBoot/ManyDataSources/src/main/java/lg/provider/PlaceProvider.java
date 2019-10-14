@@ -1,6 +1,6 @@
 package lg.provider;
 
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 import org.apache.ibatis.jdbc.SQL;
 
 /**

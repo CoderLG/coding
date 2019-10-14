@@ -21,8 +21,9 @@ public class CacheController {
     private CachingServiceImpl cachingService;
 
     @GetMapping("addCache")
-    public void addCache(String key, String value) {
+    public void addCache(String key, String value) throws Exception {
         cachingService.addMap(key,value);
+        throw new Exception("xxxxx");
     }
 
     @GetMapping("getCache")

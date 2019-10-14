@@ -3,7 +3,7 @@ package lg.service;
 
 import lg.domain.GFGX_Y_DMK_DMSJ;
 import lg.domain.GFGX_Y_DMK_DMSJ_DAO;
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 
 import java.util.List;
 

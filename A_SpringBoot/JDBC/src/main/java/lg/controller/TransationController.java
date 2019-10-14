@@ -1,13 +1,8 @@
 package lg.controller;
 
-import lg.bean.GFGX_Y_DMK_DMSJ;
 import lg.service.TransationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 /**
  * author: LG

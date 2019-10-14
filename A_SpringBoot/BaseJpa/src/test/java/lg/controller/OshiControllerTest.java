@@ -48,4 +48,14 @@ public class OshiControllerTest {
             if(s.contains("."))
                  System.out.println("suss");
     }
+
+    @Test
+    public void testFormat(){
+
+        String str="SELECT *,st_astext(\"WZ\") FROM	\"GFGX_Y_DMK_DMSJ\" WHERE \"LV\" >= 3 and (\"DMMC\" like '%s%%' OR \"DMJP\" like '%s%%' OR \"DMQP\" like '%s%%') \r\n" +
+                "ORDER BY \"LV\" LIMIT 50";
+
+        System.out.println(String.format(str,"ggg","ggg","ggg"));
+    }
+
 }

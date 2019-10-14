@@ -1,25 +1,15 @@
 package lg.controller;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import lg.dao.es.ToponymDataDao;
-import lg.dao.place.PlaceDao;
 import lg.domain.GFGX_Y_DMK_DMSJ_DAO;
 import lg.domain.ToponymData;
-import lg.service.DMSJService;
-import lg.service.impl.DMSJServiceImpl;
 import lg.service.impl.ESServiceImpl;
 import lg.service.impl.PlaceServiceImpl;
-import lg.vo.DMSJReq;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * author: LG

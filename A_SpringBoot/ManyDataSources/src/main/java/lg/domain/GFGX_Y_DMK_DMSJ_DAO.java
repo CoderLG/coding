@@ -1,8 +1,5 @@
 package lg.domain;
 
-import lg.vo.DMSJReq;
-import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;

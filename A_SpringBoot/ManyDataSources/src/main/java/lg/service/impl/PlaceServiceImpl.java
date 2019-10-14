@@ -1,10 +1,9 @@
 package lg.service.impl;
 
 import lg.dao.place.PlaceDao;
-import lg.domain.GFGX_Y_DMK_DMSJ;
 import lg.domain.GFGX_Y_DMK_DMSJ_DAO;
 import lg.domain.ToponymData;
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

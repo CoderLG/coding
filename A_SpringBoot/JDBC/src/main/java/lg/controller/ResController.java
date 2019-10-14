@@ -1,13 +1,10 @@
 package lg.controller;
 
-import com.zaxxer.hikari.HikariDataSource;
-import lg.bean.GFGX_Y_DMK_DMSJ;
+import lg.domain.GFGX_Y_DMK_DMSJ;
 import lg.config.BaseConf;
 import lg.service.DBHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;

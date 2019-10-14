@@ -2,17 +2,15 @@ package lg.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lg.bean.Car;
-import lg.bean.User;
+import lg.domain.Car;
+import lg.domain.User;
 import lg.dao.CarDao;
 import lg.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 import java.util.Set;
 
 /**

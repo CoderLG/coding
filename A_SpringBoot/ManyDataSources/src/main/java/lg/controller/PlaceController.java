@@ -1,12 +1,11 @@
 package lg.controller;
 
 import io.swagger.annotations.Api;
-import lg.dao.es.ToponymDataDao;
 import lg.dao.place.PlaceDao;
 import lg.domain.GFGX_Y_DMK_DMSJ_DAO;
 import lg.domain.ToponymData;
 import lg.service.impl.PlaceServiceImpl;
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,9 +1,8 @@
 package lg.dao.place;
 
-import lg.domain.GFGX_Y_DMK_DMSJ;
 import lg.domain.GFGX_Y_DMK_DMSJ_DAO;
 import lg.domain.ToponymData;
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 

@@ -1,6 +1,6 @@
 package lg.dao;
 
-import lg.bean.User;
+import lg.domain.User;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 

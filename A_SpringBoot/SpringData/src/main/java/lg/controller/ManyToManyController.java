@@ -2,10 +2,8 @@ package lg.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lg.bean.Car;
-import lg.bean.People;
-import lg.bean.Role;
-import lg.bean.User;
+import lg.domain.People;
+import lg.domain.Role;
 import lg.dao.PeopleDao;
 import lg.dao.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
-import java.time.Period;
 import java.util.Set;
 
 /**

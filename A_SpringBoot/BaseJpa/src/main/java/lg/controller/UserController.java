@@ -74,7 +74,7 @@ public class UserController {
     //查询
     @GetMapping("defFindAll")
     @ResponseBody
-    @Transactional                                  //查询没有事务
+    @Transactional
     @Cacheable(value = "userCache")
     public List<User> defFindAll(){
         List<User> all = userDao.findAll(new Sort(Sort.Direction.DESC,"age"));
@@ -85,7 +85,7 @@ public class UserController {
 
     @GetMapping("autoSave")
     @ResponseBody
-    @Transactional                          //查询没有事务
+    @Transactional
     public List<User> autoSave(){
         List<User> all = userDao.findAll();
         for (User u:all){
@@ -97,7 +97,7 @@ public class UserController {
 
     @GetMapping("autoSave2")
     @ResponseBody
-    @Transactional                                       //查询没有事务
+    @Transactional
     public User autoSave2(){
         Optional<User> byId = userDao.findById(3);      //debugger 中能看到
         User user = byId.get();
@@ -128,7 +128,6 @@ public class UserController {
 
 
         save.setAge(878);                    //会 自动更新 没有事务不会更新，说明是事务引起的
-
 
 
        // int i =1/0;
@@ -198,6 +197,23 @@ public class UserController {
        // int i= 1/0;
         return  byNameLikeOrderByIdDesc;
     }
+
+
+    /**
+     * private中无法调用 beean
+     *
+     * 这是可以的，所以证明私有方法是可以的
+     */
+    @GetMapping("testPrivate")
+    public void testPrivate(){
+        List<User> users = testBean();
+        System.out.println(users.size());
+    }
+    private  List<User> testBean(){
+        List<User> all = userDao.findAll();
+        return all;
+    }
+
 
 
 

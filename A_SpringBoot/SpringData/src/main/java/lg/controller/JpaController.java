@@ -1,7 +1,7 @@
 package lg.controller;
 
 import io.swagger.annotations.Api;
-import lg.bean.User;
+import lg.domain.User;
 import lg.dao.JpaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package lg.domain;
 
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.common.geo.GeoPoint;

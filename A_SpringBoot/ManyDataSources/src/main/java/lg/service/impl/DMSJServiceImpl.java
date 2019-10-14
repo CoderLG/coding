@@ -5,7 +5,7 @@ import lg.dao.es.LGDMSJDao;
 import lg.domain.GFGX_Y_DMK_DMSJ;
 import lg.domain.GFGX_Y_DMK_DMSJ_DAO;
 import lg.service.DMSJService;
-import lg.vo.DMSJReq;
+import lg.dvo.DMSJReq;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
