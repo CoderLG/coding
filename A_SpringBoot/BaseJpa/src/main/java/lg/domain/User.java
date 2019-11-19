@@ -13,6 +13,8 @@ import java.util.Set;
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer"})
 public class User  {
 
+
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	//数据库中的对应字段 user_id

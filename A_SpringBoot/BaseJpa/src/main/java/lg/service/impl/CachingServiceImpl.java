@@ -24,6 +24,7 @@ public class CachingServiceImpl {
     public void initMap() {
         map.put("init","helloCache");
         log.warn(map.toString());
+        log.error(map.toString());
     }
 
 

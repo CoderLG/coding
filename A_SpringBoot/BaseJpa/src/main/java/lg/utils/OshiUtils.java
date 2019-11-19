@@ -15,7 +15,7 @@ import oshi.software.os.OperatingSystem;
  * desc:
  */
 @RestController
-@Api(tags = "系统资源测试")
+@Api(tags = "读取系统资源")
 @Slf4j
 public class OshiUtils {
 

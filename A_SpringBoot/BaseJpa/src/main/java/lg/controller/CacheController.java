@@ -14,7 +14,7 @@ import java.util.Map;
  * desc:
  */
 @RestController
-@Api(tags = "缓存原理测试")
+@Api(tags = "缓存原理")
 public class CacheController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class CacheController {
     @GetMapping("addCache")
     public void addCache(String key, String value) throws Exception {
         cachingService.addMap(key,value);
-        throw new Exception("xxxxx");
+       // throw new Exception("xxxxx");
     }
 
     @GetMapping("getCache")

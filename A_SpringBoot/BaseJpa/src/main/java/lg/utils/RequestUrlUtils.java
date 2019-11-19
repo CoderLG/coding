@@ -6,6 +6,9 @@ import org.springframework.web.servlet.HandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 请求的url
+ */
 @Slf4j
 public class RequestUrlUtils {
 

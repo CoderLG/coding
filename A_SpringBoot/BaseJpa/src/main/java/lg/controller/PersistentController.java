@@ -1,5 +1,6 @@
 package lg.controller;
 
+import io.swagger.annotations.Api;
 import lg.dao.UserDao;
 import lg.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.Optional;
  *
  */
 @RestController
+@Api(tags = "持久化态",description = "SpringData 底层的hibernate的持久化状")
 public class PersistentController {
 
     @Autowired

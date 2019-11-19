@@ -1,6 +1,7 @@
 package lg.common;
 
 
+import lg.exception.CommonException;
 import lg.exception.GeoException;
 import lg.exception.ImageException;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,35 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+
+
+    /**
+     * 通用异常处理
+     *
+     * 出现问题的地方
+     * 打log   这样问题异常 描述的更清楚
+     * 用枚举传一个String 过来
+     *
+     * 发布倾斜摄影 实例
+     *
+     * @param response
+     * @param ex
+     * @return
+     *
+     */
+    @ResponseBody
+    @ExceptionHandler(CommonException.class)
+    public String handleCommonException(HttpServletResponse response, Exception ex) {
+
+        response.setStatus(500);
+        CommonException e = (CommonException) ex;
+        String restError = e.getRestError();
+        return restError;
+
+    }
+
+
 
     /**
      * DMDefinedException的异常的处理
@@ -102,7 +132,7 @@ public class GlobalExceptionHandler {
     public String handleException(HttpServletResponse response, Exception ex) {
         response.setStatus(500);
         log.error(ex.getMessage(),ex);
-        return RestError.INPUT_ERROR.toString();
+        return RestError.UNKNOW_ERROR.toString();
 
     }
 

@@ -1,18 +1,22 @@
 package lg.controller;
 
 import io.swagger.annotations.Api;
+import javassist.SerialVersionUID;
 import lg.domain.User;
 import lg.dao.UserDao;
+import lg.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.persistence.criteria.*;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +34,94 @@ import java.util.Optional;
  *
  *查询是没事务的
  */
-@Api(tags = "JpaRepository中自带的方法")
+@Api(tags = "自带方法",description = "深入SpringData")
 @Controller
 public class UserController {
 
     @Autowired
     private UserDao userDao;
 
-    //JpaRepository 中自带的方法--------------------------
+
+    @Autowired
+    private  UserServiceImpl userService;
+
+    //------------------测试原生sql------------
+
+    @GetMapping("updateAll")
+    @ResponseBody
+    public Integer updateAll(int age){
+       return userService.updateAll(age);
+
+    }
+
+    @GetMapping("updateOne")
+    @ResponseBody
+    public Integer updateOne(int userid){
+        return userService.updateOne(userid);
+    }
+
+    @GetMapping("updateTwo")
+    @ResponseBody
+    @Transactional
+    public Integer updateTwo(int age,int userid){
+        Integer integer = userService.updateAll(age);
+        userService.updateOne(userid);
+        int a = 1/0;
+        return integer;
+    }
+
+
+
+
+
+
+    //------------------调用service 测试事务----------start------------
+    @GetMapping("noTransactionalUpdateSomeThing")
+    @ResponseBody
+    public void noTransactionalUpdateSomeThing(String name ,int userid){
+        userService.noTransactionalUpdateSomeThing(name,userid);
+    }
+
+    @GetMapping("transactionalUpdateSomeThing")
+    @ResponseBody
+    public void transactionalUpdateSomeThing(String name ,int userid){
+        userService.transactionalUpdateSomeThing(name,userid);
+    }
+
+
+    @GetMapping("transactionalUpdateSomeThing2")
+    @ResponseBody
+    public void transactionalUpdateSomeThing2(String name ,int userid){
+        userService.transactionalUpdateSomeThing2(name,userid);
+    }
+
+    @GetMapping("deleteOne")
+    @ResponseBody
+    public void deleteOne(int userid){
+        userService.deleteOne(userid);
+    }
+
+    @GetMapping("deleteOne2")
+    @ResponseBody
+    public void deleteOne2(int userid){
+        userService.deleteOne2(userid);
+    }
+
+    @GetMapping("deleteOne3")
+    @ResponseBody
+    public void deleteOne3(int userid){
+        userService.deleteOne3(userid);
+    }
+
+    //------------------调用service 测试事务----------end------------
+
+
+
+
+
+
+
+    //-------------------JpaRepository 中自带的方法--------------start------------
 
     //单条增加
     @GetMapping("defAddUser")
@@ -83,6 +167,27 @@ public class UserController {
         return all;
     }
 
+    //复杂查询
+    @GetMapping("specifiFind")
+    @ResponseBody
+    public void specifiFind(){
+
+        Specification<User> aa = new Specification<User>() {
+
+            private static final long serialVersionUID = 136546983164948941L;
+
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+
+                Path<Object> age = root.get("age");
+                Predicate equal = cb.equal(age, 12);
+                return equal;
+            }
+
+        };
+    }
+
+
     @GetMapping("autoSave")
     @ResponseBody
     @Transactional
@@ -99,7 +204,7 @@ public class UserController {
     @ResponseBody
     @Transactional
     public User autoSave2(){
-        Optional<User> byId = userDao.findById(3);      //debugger 中能看到
+        Optional<User> byId = userDao.findById(3);       //debugger 中能看到
         User user = byId.get();
         user.setAge(555);                                //会 自动更新 没有事务不会更新，说明是事务引起的
         System.out.println("update end");
@@ -147,10 +252,11 @@ public class UserController {
     public void defDelAll(){
         userDao.deleteAll();
     }
+    //-------------------JpaRepository 中自带的方法--------------end------------
 
 
-    //@query 方法------nativeQuery-----------------------------------------------
 
+    //--------------------@query 方法------nativeQuery-----------start----------
    //查询
     @GetMapping("querySomeThing")
     @ResponseBody
@@ -173,10 +279,9 @@ public class UserController {
         System.out.println("end");
         // int i = 1/0;
     }
+    //--------------------@query 方法------nativeQuery-----------end----------
 
-
-    //命名规则查询-----------------------------------------------------
-
+    //-------------------命名规则查询----------------------------start---------
     //查询
     @GetMapping("findByNameLikeOrderByIdDesc")
     @ResponseBody
@@ -197,8 +302,9 @@ public class UserController {
        // int i= 1/0;
         return  byNameLikeOrderByIdDesc;
     }
+    //-------------------命名规则查询----------------------------end---------
 
-
+    //-------------------调用私有方法----------------------------start---------
     /**
      * private中无法调用 beean
      *
@@ -213,7 +319,7 @@ public class UserController {
         List<User> all = userDao.findAll();
         return all;
     }
-
+    //-------------------调用私有方法----------------------------end---------
 
 
 

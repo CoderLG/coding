@@ -81,6 +81,13 @@
             <version>1.2.60</version>
         </dependency>
 
+
+        <!-- bean 的转换 -->
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.4.0</version>
+        </dependency>
         <!-- ===================基础========================= -->
 
 

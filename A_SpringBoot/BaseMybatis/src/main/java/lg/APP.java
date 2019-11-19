@@ -14,7 +14,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication
 @EnableSwagger2Doc
 @MapperScan("lg.dao")
-public class APP {
+public class    APP {
     public static void main(String[] args) {
         SpringApplication.run(APP.class, args);
     }

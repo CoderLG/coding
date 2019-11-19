@@ -3,6 +3,7 @@ package lg.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.annotations.Api;
 import lg.domain.User;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
  * date: 2019-09-09 09:39
  * desc:
  */
+@Api(tags = "token")
 public class JwtUtils {
     public static final String SUBJECT = "testToken";
 

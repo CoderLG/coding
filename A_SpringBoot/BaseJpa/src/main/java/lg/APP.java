@@ -4,6 +4,7 @@ import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * author: LG
@@ -13,6 +14,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableSwagger2Doc
+@EnableAsync
 @EnableCaching
 public class APP {
     public static void main(String[] args) {
