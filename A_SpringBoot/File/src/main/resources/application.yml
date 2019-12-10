@@ -2,10 +2,12 @@ server:
   port: 8080
 
 
+
+
 spring:
   datasource:
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://192.168.4.98:5431/gv_tp
+      url: jdbc:postgresql://192.168.4.17:4444/tmp
       username: postgres
       password: postgres
   jpa:

@@ -13,6 +13,6 @@ public class FileUtilsTest {
 
     @Test
     public void streamWrite() {
-        FileUtils.streamWrite();
+
     }
 }

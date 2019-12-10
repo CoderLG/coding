@@ -145,17 +145,13 @@ public class FileUtils {
     }
 
 
-    public static void streamWrite(){
+    public static void streamWrite(int start ,int end ,String url,String path){
 
-        try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C:\\Users\\admin\\Desktop\\index.csv", true)))) {
-            for(int i=1000;i<=600000;){
-                int index1 = i;
-                int index2 = i+1;
-                int index3 = i+2;
-                int index4 = i+3;
-                out.write(index1+","+index2+","+index3+","+index4);
+        try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path, true)))) {
+            String targetPath = url;
+            for(int i=start;i<=end;i++){
+                out.write("you-get -o ./videos "+url+i);
                 out.newLine();
-                i=i+4;
             }
 
         } catch (FileNotFoundException e) {
